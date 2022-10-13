@@ -1,0 +1,53 @@
+{
+  "name": "mini-i18n",
+  "version": "1.0.0-beta.0",
+  "description": "Lightweight the internationalization module",
+  "main": "src/main.cjs",
+  "module": "src/main.mjs",
+  "unpkg": "src/main.js",
+  "jsdelivr": "src/main.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "mocha test/main.mjs",
+    "lint": "npx eslint src && npx prettier --check src",
+    "lint:fix": "npx eslint --fix src && npx prettier --check --write src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lete114/mini-i18n.git"
+  },
+  "keywords": [
+    "i18n",
+    "json",
+    "translation",
+    "internationalization"
+  ],
+  "author": "Lete <me@imlete.cn> (https://www.imlete.cn)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lete114/mini-i18n/issues"
+  },
+  "homepage": "https://github.com/Lete114/mini-i18n#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.4",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-typescript": "^9.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "mocha": "^10.0.0",
+    "prettier": "^2.7.1",
+    "rollup": "^3.1.0",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.8.4"
+  }
+}
