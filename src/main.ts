@@ -17,7 +17,7 @@ function isObject(param: KV) {
 }
 
 function i18n(key: string) {
-  key = key.replace(/\[(\w+)\]/g, '.$1') // 处理数组下标
+  key = key.replace(/\[(\w+)\]/g, '.$1') // Handle array subscripts
   const arr = key.split('.')
   let obj = { ...(languages[useLang] as KV) }
   for (let i = 0; i < arr.length; i++) obj = nullish(obj[arr[i]], null)
