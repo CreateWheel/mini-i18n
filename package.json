@@ -1,17 +1,22 @@
 {
   "name": "mini-i18n",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Lightweight the internationalization module",
-  "main": "src/main.cjs",
-  "module": "src/main.mjs",
-  "unpkg": "src/main.js",
-  "jsdelivr": "src/main.js",
+  "main": "dist/main.cjs",
+  "module": "dist/main.mjs",
+  "unpkg": "dist/main.js",
+  "jsdelivr": "dist/main.js",
   "type": "module",
   "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
+    "dist"
   ],
+  "exports":{
+    ".":{
+      "require":"./dist/main.cjs",
+      "import":"./dist/main.mjs",
+      "default":"./dist/main.js"
+    }
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",

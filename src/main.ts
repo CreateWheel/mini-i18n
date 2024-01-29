@@ -2,7 +2,7 @@
 const nullish = (v: any, vv: any) => (null == v ? vv : v)
 
 type KV = {
-  [key: string]: number | string | boolean | [] | KV
+  [key: string]: number | string | boolean | [] | {}
 }
 
 let languages: KV
