@@ -2,7 +2,7 @@
 const nullish = (v: any, vv: any) => (null == v ? vv : v)
 
 type KV = {
-  [key: string]: number | string | boolean | [] | {}
+  [key: string]: number | string | boolean | [] | Record<string, unknown>
 }
 
 let languages: KV
@@ -30,7 +30,7 @@ type options = {
   languages?: KV
 }
 // eslint-disable-next-line no-unused-vars
-export function init(options: options): (key: string, params: KV) => KV {
+export function init(options: options) {
   if (!isObject(options)) options = {}
   if (typeof options.lang === 'string') useLang = options.lang
   languages = options.languages || {}

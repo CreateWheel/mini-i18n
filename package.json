@@ -1,6 +1,6 @@
 {
   "name": "mini-i18n",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Lightweight the internationalization module",
   "main": "dist/main.cjs",
   "module": "dist/main.mjs",
