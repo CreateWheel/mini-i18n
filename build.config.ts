@@ -1,4 +1,4 @@
-import { babel, getBabelInputPlugin, getBabelOutputPlugin } from '@rollup/plugin-babel'
+import { babel, getBabelOutputPlugin } from '@rollup/plugin-babel'
 import terser from '@rollup/plugin-terser'
 import { defineBuildConfig } from 'unbuild'
 
@@ -32,10 +32,14 @@ export default defineBuildConfig([
               getBabelOutputPlugin({
                 filename: 'miniI18n',
                 presets: [
-                  ['@babel/preset-env', {
-                    modules: 'umd',
-                    targets: ['chrome >= 52']
-                  }]],
+                  [
+                    '@babel/preset-env',
+                    {
+                      modules: 'umd',
+                      targets: ['chrome >= 52'],
+                    },
+                  ],
+                ],
               }),
               terser({}),
             ],

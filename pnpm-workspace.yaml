@@ -30,5 +30,3 @@ catalogs:
 onlyBuiltDependencies:
   - esbuild
   - simple-git-hooks
-catalog:
-  '@babel/plugin-transform-runtime': ^7.26.10

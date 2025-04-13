@@ -17,14 +17,11 @@
 - 🌐 Dynamic language switching
 - ➕ Dynamic language addition
 - ⚡ Internal caching mechanism for better performance
+- 🧩 Built-in event system (e.g., listen to language changes)
 
 ## 🔧 Type Support
 
-Built-in type inference support for IDE smart hints.
-
-```ts
-type ObjectKeyPaths<T, P extends string = ''> = // Automatically generates language key path types
-```
+Automatically generates language key path types. Built-in type inference support for IDE smart hints.
 
 ## 📦 Installation
 
@@ -73,18 +70,25 @@ i18n.t('settings.title') // => "设置"
 
 // Using interpolation
 i18n.t('greeting', { params: { name: 'Lete' } }) // => "你好, Lete!"
+
+// Listen to language changes
+i18n.on('language:changed', (payload) => {
+  console.log('Language changed to:', payload.language)
+})
+i18n.on('language:added', (payload) => {})
+i18n.on('missingKey', (payload) => {})
 ```
 
 ## ⚙️ Configuration Options
 
 ### `new I18n(options)`
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `defaultLanguage` | `keyof T` | The default language |
-| `language` | `keyof T` | The current language |
-| `languages` | `Record<string, object>` | The collection of language data |
-| `interpolation` _(optional)_ | `{ prefix: string; suffix: string }` | The prefix and suffix for interpolation placeholders (default: `{}`) |
+| Parameter           | Type                         | Description                                             |
+|---------------------|------------------------------|---------------------------------------------------------|
+| `defaultLanguage`   | `keyof T`                    | The default language                                    |
+| `language`          | `keyof T`                    | The current language                                    |
+| `languages`         | `Record<string, object>`     | The collection of language data                         |
+| `interpolation` _(optional)_ | `{ prefix: string; suffix: string }` | Prefix and suffix for interpolation (default: `{}`)    |
 
 ## 🧩 API
 
@@ -100,7 +104,7 @@ i18n.t('unknown.key', { defaultValue: 'Not found' }) // => "Not found"
 
 ### `setLanguage(language: keyof T)`
 
-Sets the specified language and clears the cache.
+Sets the specified language and clears the cache. Will trigger the `language:changed` event.
 
 ### `getLanguage(): keyof T`
 
@@ -113,6 +117,61 @@ Dynamically adds a new language package.
 ### `clearCache()`
 
 Clears the translation cache.
+
+## 📣 Events
+
+### `on(event: 'language:changed', listener: ({ language: keyof T }) => void)`
+
+Listen for language change events.
+
+```ts
+i18n.on('language:changed', (payload) => {
+  console.log(`Language changed to: ${payload.language}`)
+})
+```
+
+### `once(event: 'language:changed', listener: ({ language: keyof T }) => void)`
+
+Listen for a language change only once.
+
+```ts
+i18n.once('language:changed', (payload) => {
+  console.log('One-time language switch:', payload.language)
+})
+```
+
+### `off(event: 'language:changed', listener: ({ language: keyof T }) => void)`
+
+Remove a previously registered event listener.
+
+```ts
+function fn() {}
+i18n.on('language:changed', fn)
+i18n.off('language:changed', fn)
+```
+
+### `clear(event?: 'language:changed')`
+
+Clear all or specific event listeners.
+
+```ts
+i18n.clear() // Clear all listeners
+i18n.clear('language:changed') // Clear only 'change' listeners
+```
+
+## 📚 `EventEmitter` (Optional Utility)
+
+You can also use the built-in event system separately:
+
+```ts
+import { EventEmitter } from 'mini-i18n'
+
+const emitter = new EventEmitter()
+
+const listener = () => console.log('triggered')
+emitter.on('custom', listener)
+emitter.emit('custom') // => triggered
+```
 
 ## 📄 License
 

@@ -1,2 +1,3 @@
 .:
+  EventEmitter: function
   I18n: function

@@ -1,7 +1,7 @@
 {
   "name": "mini-i18n",
   "type": "module",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "packageManager": "pnpm@10.6.2",
   "description": "Lightweight the internationalization module",
   "author": "Lete114 <me@imlete.cn>",
@@ -12,7 +12,16 @@
     "url": "git+https://github.com/CreateWheel/mini-i18n.git"
   },
   "bugs": "https://github.com/CreateWheel/mini-i18n/issues",
-  "keywords": [],
+  "keywords": [
+    "mini",
+    "internationalization",
+    "i18n",
+    "translation",
+    "localization",
+    "l10n",
+    "globalization",
+    "gettext"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
