@@ -76,7 +76,10 @@ i18n.on('language:changed', (payload) => {
   console.log('Language changed to:', payload.language)
 })
 i18n.on('language:added', (payload) => {})
-i18n.on('missingKey', (payload) => {})
+
+// Cancel the listener
+const unlistenMissingKey = i18n.on('missingKey', (payload) => {})
+unlistenMissingKey()
 ```
 
 ## ⚙️ Configuration Options
@@ -120,7 +123,7 @@ Clears the translation cache.
 
 ## 📣 Events
 
-### `on(event: 'language:changed', listener: ({ language: keyof T }) => void)`
+### `on(event: 'language:changed', listener: ({ language: keyof T }) => void): () => void`
 
 Listen for language change events.
 
@@ -130,7 +133,7 @@ i18n.on('language:changed', (payload) => {
 })
 ```
 
-### `once(event: 'language:changed', listener: ({ language: keyof T }) => void)`
+### `once(event: 'language:changed', listener: ({ language: keyof T }) => void): () => void`
 
 Listen for a language change only once.
 

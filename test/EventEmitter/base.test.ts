@@ -6,7 +6,7 @@ interface TestEvents {
   bar: number
 }
 
-describe('test EventEmitter', () => {
+describe('event emitter', () => {
   it('should register and emit events with "on"', () => {
     const emitter = new EventEmitter<TestEvents>()
     const handler = vi.fn()
@@ -133,5 +133,37 @@ describe('test EventEmitter', () => {
     emitter.emit('foo', 'again')
 
     expect(handler).toHaveBeenCalledTimes(1)
+  })
+
+  it('should return function to cancel listener in "on"', () => {
+    const emitter = new EventEmitter<TestEvents>()
+    const handler = vi.fn()
+
+    const cancel = emitter.on('foo', handler)
+    emitter.emit('foo', 'test')
+
+    expect(handler).toHaveBeenCalledTimes(1)
+    expect(handler).toHaveBeenCalledWith('test')
+
+    cancel() // Cancel the listener
+    emitter.emit('foo', 'should not trigger')
+
+    expect(handler).toHaveBeenCalledTimes(1) // Should not be called again
+  })
+
+  it('should return function to cancel listener in "once"', () => {
+    const emitter = new EventEmitter<TestEvents>()
+    const handler = vi.fn()
+
+    const cancel = emitter.once('bar', handler)
+    emitter.emit('bar', 42)
+
+    expect(handler).toHaveBeenCalledTimes(1)
+    expect(handler).toHaveBeenCalledWith(42)
+
+    cancel() // Cancel the listener
+    emitter.emit('bar', 100)
+
+    expect(handler).toHaveBeenCalledTimes(1) // Should not be called again
   })
 })

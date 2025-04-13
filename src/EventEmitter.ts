@@ -4,19 +4,22 @@ export type EventListener<T> = (payload: T) => void
 export class EventEmitter<T extends EventMap> {
   #events = new Map<keyof T, Set<EventListener<any>>>()
 
-  on<K extends keyof T>(event: K, listener: EventListener<T[K]>): void {
+  on<K extends keyof T>(event: K, listener: EventListener<T[K]>) {
     if (!this.#events.has(event)) {
       this.#events.set(event, new Set())
     }
     this.#events.get(event)!.add(listener)
+    return () => {
+      this.off(event, listener)
+    }
   }
 
-  once<K extends keyof T>(event: K, listener: EventListener<T[K]>): void {
+  once<K extends keyof T>(event: K, listener: EventListener<T[K]>): () => void {
     const wrapper = (payload: T[K]): void => {
       this.off(event, wrapper)
       listener(payload)
     }
-    this.on(event, wrapper)
+    return this.on(event, wrapper)
   }
 
   off<K extends keyof T>(event: K, listener: EventListener<T[K]>): void {
