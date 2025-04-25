@@ -25,8 +25,20 @@ Automatically generates language key path types. Built-in type inference support
 
 ## 📦 Installation
 
+Using npm:
 ```bash
 npm install mini-i18n
+```
+
+Using CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/mini-i18n"></script>
+<!-- or -->
+<script src="https://unpkg.com/mini-i18n"></script>
+
+<script>
+const i18n = new miniI18n.I18n({ .. })
+</script>
 ```
 
 ## 🚀 Usage Example

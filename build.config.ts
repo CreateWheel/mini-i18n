@@ -5,19 +5,12 @@ import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig([
   {
     entries: [
-      'src/index',
+      { input: 'src/index', name: 'i18n' },
     ],
     declaration: 'node16',
     clean: true,
     rollup: {
       emitCJS: true,
-      esbuild: {
-        tsconfigRaw: {
-          compilerOptions: {
-            useDefineForClassFields: true,
-          },
-        },
-      },
     },
     hooks: {
       'rollup:options': (ctx, option) => {
