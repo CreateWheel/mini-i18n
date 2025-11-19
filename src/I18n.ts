@@ -89,9 +89,9 @@ export class I18n<T extends Record<string, object>> extends EventEmitter<I18nEve
   }
 
   setLanguage<L extends keyof T>(language: L): void {
-    this.emit('language:changed', { language })
     this.clearCache()
     this.#language = language
+    this.emit('language:changed', { language })
   }
 
   addLanguage(language: keyof T, languageData: T[keyof T]): void {
