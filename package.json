@@ -1,7 +1,7 @@
 {
   "name": "mini-i18n",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@10.6.2",
   "description": "Lightweight the internationalization module",
   "author": "Lete114 <me@imlete.cn>",
