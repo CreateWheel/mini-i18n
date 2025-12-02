@@ -50,6 +50,9 @@
     "typecheck": "tsc --noEmit",
     "prepare": "simple-git-hooks"
   },
+  "dependencies": {
+    "mini-emit": "catalog:deps"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:cli",
     "@babel/preset-env": "catalog:plugins",

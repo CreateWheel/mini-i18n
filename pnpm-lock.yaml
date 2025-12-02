@@ -30,6 +30,10 @@ catalogs:
     vite:
       specifier: ^6.2.1
       version: 6.2.1
+  deps:
+    mini-emit:
+      specifier: 1.0.0-beta.0
+      version: 1.0.0-beta.0
   plugins:
     '@babel/preset-env':
       specifier: ^7.26.9
@@ -62,6 +66,10 @@ catalogs:
 importers:
 
   .:
+    dependencies:
+      mini-emit:
+        specifier: catalog:deps
+        version: 1.0.0-beta.0
     devDependencies:
       '@antfu/eslint-config':
         specifier: catalog:cli
@@ -2410,6 +2418,9 @@ packages:
   min-indent@1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+
+  mini-emit@1.0.0-beta.0:
+    resolution: {integrity: sha512-AL0eo9VHVkgb+eSg02KQ+cuu67NasLdqqUBHjb2xe5vTYbaOLiVM5QSszpVrum82CygYf/7/orBtXIO1qkY9ZQ==}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -5834,6 +5845,8 @@ snapshots:
   mimic-function@5.0.1: {}
 
   min-indent@1.0.1: {}
+
+  mini-emit@1.0.0-beta.0: {}
 
   minimatch@3.1.2:
     dependencies:

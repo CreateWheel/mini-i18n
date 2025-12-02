@@ -1,4 +1,4 @@
-import { EventEmitter } from './EventEmitter'
+import { EventEmitter } from 'mini-emit'
 
 export type ObjectKeyPaths<T, P extends string = ''> = T extends object
   ? {
